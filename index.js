@@ -65,3 +65,57 @@ chessBoardGrid = (size) => {
 }
 
 chessBoardGrid(8);
+
+
+// Chapter 3 exercises
+
+min = (a, b) => {
+  if (a < b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+console.log(min(0, 10));
+console.log(min(0, -10));
+
+
+
+isEven = (n) => {
+  if (n === 0) {
+    return true;
+  } else if (n === -1 || n === 1) {
+    return false;
+  } else {
+    if (n < 0) {
+      return isEven(n + 2);
+    } else {
+      return isEven(n - 2);
+    }
+  }
+}
+
+console.log(isEven(50));
+console.log(isEven(75));
+console.log(isEven(-100));
+console.log(isEven(-5));
+
+
+
+countChar = (word, char) => {
+  count = 0;
+  for (i = 0; i < word.length; i++) {
+    if (word.charAt(i) === char) {
+      count++;
+    }
+  }
+  return count;
+}
+
+countBs = (word) => {
+  return count = countChar(word, "B");
+}
+
+console.log(countBs("BBC"));
+console.log(countChar("kakkerlak", "k"));
