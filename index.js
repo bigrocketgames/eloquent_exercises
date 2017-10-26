@@ -119,3 +119,125 @@ countBs = (word) => {
 
 console.log(countBs("BBC"));
 console.log(countChar("kakkerlak", "k"));
+
+
+// Chapter 4 Exercises
+
+range = (start, end, step = 1) => {
+  newArray = [];
+  if (step < 0) {
+    for (i = start; i >= end; i += step) {
+      newArray.push(i);
+    }
+  } else {
+    for (i = start; i <= end; i += step) {
+      newArray.push(i);
+    }
+  }
+  return newArray;
+}
+console.log(range(1, 10, 2));
+console.log(range(5, 2, -1));
+
+sum = (numArray) => {
+  total = 0;
+  for ( i = 0; i < numArray.length; i++) {
+    total += numArray[i];
+  }
+  return total;
+}
+
+console.log(sum(range(1, 10)));
+
+
+
+reverseArray = (array) => {
+  newArray = [];
+  while(array.length > 0) {
+    newArray.push(array.pop());
+  }
+  return newArray;
+}
+
+testArray = [1, 2, 3, 4];
+console.log(reverseArray(testArray));
+
+reverseArrayInPlace = (array) => {
+  arrayValue = null;
+  for (i = 0; i <= Math.floor(array.length / 2); i++){
+    arrayValue = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = arrayValue;
+  }
+  return array;
+}
+
+testArray1 = [2, 3, 4, 5, 6];
+console.log(reverseArrayInPlace(testArray1));
+console.log(testArray1);
+
+prepend = (element, list) => {
+  return list = {value: element, rest: list};
+}
+
+arrayToList = (array) => {
+  list = null;
+  while (array.length > 0) {
+    list = prepend(array.pop(), list);
+  }
+  return list;
+}
+
+console.log(arrayToList([10, 20]));
+
+listToArray = (list) => {
+  array = [];
+  for (node = list; node; node = node.rest) {
+    array.push(node.value);
+  }
+  return array;
+}
+
+console.log(listToArray(arrayToList([10, 20, 30])));
+
+nth = (list, index) => {
+  count = 0;
+  for (node = list; node; node = node.rest) {
+    if (count === index) {
+      return node.value;
+    } else if (node.rest === null) {
+      return undefined;
+    } else {
+      count ++;
+    }
+  }
+}
+
+console.log(nth(arrayToList([10, 20, 30]), 1));
+
+deepEqual = (value1, value2) => {
+  if ((typeof value1 == "object" && value1 != null) && (typeof value2 == "object" && value2 != null)) {
+    for (var event in value1) {
+      if ((typeof value1[event] === "object" && value1[event] != null) && (typeof value2[event] === "object" && value2[event] != null)) {
+        deepEqual(value1[event], value2[event]);
+      } else if (value1[event] !== value2[event]) {
+        return false;
+      }
+    }
+  } else {
+    if (value1 !== value2) {
+      return false;
+    }
+  }
+  return true;
+}
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+
+
+
+// Chapter 5 exercises
+
